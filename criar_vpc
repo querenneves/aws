@@ -1,0 +1,23 @@
+CIDR IPv4:
+ CIDR privados, como 10.0.0.0/16, para criar sua VPC.
+ 10.0.0.0/16
+ 10.0.0.0/16 está dentro da faixa privada 10.0.0.0 - 10.255.255.255.
+
+Grupo IPv6:
+ IPv6 é fixo (/56)
+
+Endereços IP:
+ IPv4: Utiliza endereços IP de 32 bits (escassez)
+ IPv6: Utiliza endereços IP de 128 bits
+
+Número de zonas de disponibilidade:
+ sub-redes em pelo menos duas zonas (produção)
+
+Número de sub-redes:
+ públicas / privadas
+
+Intervalos de endereços IP para suas sub-redes:
+ Personalizar blocos CIDR de sub-redes.
+
+ 
+  
