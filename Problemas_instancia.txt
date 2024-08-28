@@ -26,4 +26,13 @@ Depois, execute o comando a seguir. Substitua <public-ip> pelo endere√ßo IPv4 p√
 nmap -Pn <public-ip>
 
 
+Modelo de id-ami:
+
+{
+ 
+"ImageId": "ami-abcdef01234567890"
+ 
+}
+
+
 
