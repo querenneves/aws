@@ -1,0 +1,4 @@
+Verificar se tem as permissões necessárias:
+
+aws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro --dry-run
+
