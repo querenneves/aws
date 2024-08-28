@@ -1,0 +1,29 @@
+Solucionar problemas para criar uma instância
+
+
+Configurando:
+
+aws configure
+
+
+Listando perfis
+aws configure list-profiles
+
+Diagnóstico:
+aws ec2 describe-images --owners self amazon --debug
+
+Verifique se suas credenciais estão configuradas corretamente:
+aws configure list
+
+Corrigindo erro no script:
+view create-lamp-instance-v2.sh
+
+Instalar o nmap, que é uma ferramenta de verificação de porta:
+sudo yum install -y nmap
+
+Depois, execute o comando a seguir. Substitua <public-ip> pelo endereço IPv4 público real da instância LAMP:
+
+nmap -Pn <public-ip>
+
+
+
