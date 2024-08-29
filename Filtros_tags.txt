@@ -1,0 +1,26 @@
+Lista todas as instâncias EC2 que possuem a tag Project:
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem"
+
+Filtrar as instâncias pelo Project com valor ERPSystem:
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].InstanceId'
+
+Retorna o ID das instâncias:
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone}'
+
+Além do ID da instância e a zona de disponibilidade, o comando também retorna o valor da tag Project associada à instância:
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key==`Project`] | [0].Value}'
+
+Filtra e retorna o valor da tag:
+Tags[?Key==\`Project\`] | [0].Value
+
+ID da instância e a zona de disponibilidade, ele também retorna os valores das tags: 
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key==`Project`] | [0].Value,Environment:Tags[?Key==`Environment`] | [0].Value,Version:Tags[?Key==`Version`] | [0].Value}'
+
+ID da instância, a zona de disponibilidade, e os valores das tags Project, Environment, e Version:
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" "Name=tag:Environment,Values=development" --query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key==`Project`] | [0].Value,Environment:Tags[?Key==`Environment`] | [0].Value,Version:Tags[?Key==`Version`] | [0].Value}'
+
+
+aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].{ID:InstanceId, AZ:Placement.AvailabilityZone, Project:Tags[?Key==`Project`] |[0].Value,Environment:Tags[?Key==`Environment`] | [0].Value,Version:Tags[?Key==`Version`] | [0].Value}'
+
+Encerrar (deletar) instâncias EC2 em uma determinada região e subnet:
+./terminate-instances.php -region <region> -subnetid <subnet-id>
